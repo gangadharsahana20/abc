@@ -112,6 +112,13 @@ nav ul li a:hover {
   max-width: 500px;
 }
 
+.content h2 {
+  font-size: 30px;
+  color: #ff83d3;
+  margin-bottom: 10px;
+}
+
+
 .hero-img img {
   height: 500px;
   object-fit: cover;
