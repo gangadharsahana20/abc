@@ -60,7 +60,7 @@ nav ul li a:hover {
 }
 
 /* Responsive Styles */
-@media (max-width: 768px) {
+@media (max-width: 700px) {
   nav ul {
     position: absolute;
     top: 60px;
@@ -92,6 +92,8 @@ nav ul li a:hover {
     display: block;
   }
 }
+
+
 
 /*--------------------section 1-------------------*/
 
@@ -170,7 +172,7 @@ nav ul li a:hover {
 }
 
 /* Responsive Design */
-@media (max-width: 768px) {
+@media (max-width: 700px) {
   header {
     padding: 10px 20px;
   }
@@ -205,12 +207,17 @@ nav ul li a:hover {
     max-width: 100%;
   }
 
+  .content h4 {
+    font-size: 8px;
+    
+  }
+
   .content h1 {
-    font-size: 36px;
+    font-size: 10px;
   }
 
   .content h1 span {
-    letter-spacing: 5px;
+    letter-spacing: 3px;
   }
 
   .content p {
@@ -263,6 +270,45 @@ nav ul li a:hover {
   line-height: 1.8;
   color: #333;
 }
+
+.about-text h2 {
+  display: inline-block;
+  opacity: 0;
+  transform: rotate(0deg);
+  animation: spinFadeIn 1.2s ease-out forwards;
+  animation-delay: 0.2s;
+  transform-origin: center center;
+}
+
+.about-text p {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeSlideUp 1.2s ease-out forwards;
+  animation-delay: 1.4s; /* starts after heading finishes */
+}
+
+@keyframes spinFadeIn {
+  0% {
+    opacity: 0;
+    transform: rotate(0deg) scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: rotate(360deg) scale(1);
+  }
+}
+
+@keyframes fadeSlideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 
 /* Right: Images */
 /* Container styles */
@@ -468,7 +514,7 @@ body {
 }
 
 /* 🔥 Animate just the highlighted text */
-.content-right h2 span, .card{
+.content-right h2, .card{
   color: #ec407a;
   display: inline-block;
   opacity: 0;
@@ -571,6 +617,48 @@ body {
     font-size: 14px;
   }
 }
+
+/* Paragraph and Button with animation */
+.content-right p,
+.content-right .btn {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: slideUpFade 1s ease-out forwards;
+}
+
+/* Optional: delay button slightly for staggered effect */
+.content-right .btn {
+  animation-delay: 0.3s;
+}
+
+/* Slide-up fade-in keyframes */
+@keyframes slideUpFade {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Button styles */
+.btn {
+  background: #ec407a;
+  color: #fff;
+  padding: 12px 24px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: bold;
+  display: inline-block;
+  transition: background 0.3s ease;
+}
+
+.btn:hover {
+  background: #d81b60;
+}
+
 
 
 /*----------------------------section 4---------------------------*/
@@ -699,6 +787,67 @@ body {
   border-radius: 20px;
 }
 
+/* Keyframes for throw animation */
+@keyframes fastThrow {
+  0% {
+    opacity: 0;
+    transform: translateY(60px) scale(0.95) rotate(-2deg);
+  }
+  60% {
+    transform: translateY(-10px) scale(1.02) rotate(1deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1) rotate(0);
+  }
+}
+
+/* Animate all image wrappers */
+.image-wrapper {
+  animation: fastThrow 0.8s ease-out forwards;
+  opacity: 0;
+}
+
+/* Add staggered delays */
+.image-large {
+  animation-delay: 0.2s;
+}
+
+.image-top-right {
+  animation-delay: 0.4s;
+}
+
+.image-bottom-right {
+  animation-delay: 0.6s;
+}
+
+/* Animate heading, subheading, paragraph and button */
+.conference-text .subheading,
+.conference-text h2,
+.conference-text p,
+.btn-discover {
+  opacity: 0;
+  animation: fastThrow 0.7s ease-out forwards;
+}
+
+.conference-text .subheading {
+  animation-delay: 0.1s;
+}
+
+.conference-text h2 {
+  animation-delay: 0.2s;
+}
+
+.conference-text p {
+  animation-delay: 0.3s;
+}
+
+.btn-discover {
+  animation-delay: 0.4s;
+}
+
+
+
 /* Responsive Design */
 @media (max-width: 990px) {
   .conference-container {
@@ -779,7 +928,9 @@ body {
   max-width: 600px;
   margin-left: auto;
   margin-right: auto;
+  opacity: 0; /* Add initial state */
 }
+
 
 .section-title span {
   color: #f75194;
@@ -884,6 +1035,40 @@ body {
   }
 }
 
+@keyframes bounceInButton {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1; /* Ensure it stays visible */
+  }
+}
+
+
+.view-button {
+  background-color: #f75194;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  padding: 10px 25px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  display: block;
+  margin: 0 auto;
+  max-width: 180px;
+  animation: bounceInButton 1s ease-out forwards;
+  animation-delay: 1.2s;
+  opacity: 0; /* Needed for animation */
+}
+
+
 @media (max-width: 768px) {
   .speakers-section {
     padding: 80px 15px 40px;
@@ -985,6 +1170,53 @@ body {
   display: block;
 }
 
+/*-----------------------animation for left part--------------------*/
+
+
+@keyframes slideInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.benefits-left h2 {
+  font-size: 2.8rem;
+  font-family: 'Georgia', serif;
+  margin-bottom: 20px;
+  opacity: 0;
+  animation: slideInLeft 0.6s ease-out forwards;
+  animation-delay: 0.3s;
+}
+
+.benefits-left p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  opacity: 0;
+  animation: slideInLeft 0.6s ease-out forwards;
+  animation-delay: 0.5s;
+}
+
+.left-image {
+  margin-top: 30px;
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  border-radius: 20px;
+  display: block;
+  opacity: 0;
+  animation: slideInLeft 0.6s ease-out forwards;
+  animation-delay: 0.7s;
+}
+
+
+/*-----------------------css fot right side------------------*/
+
+
 /* Right Side */
 .benefits-right {
   flex: 1 1 50%;
@@ -1027,6 +1259,49 @@ body {
   border-top: 1px solid #c3e5c1;
   margin: 20px 0;
 }
+
+
+/*------------animation for right part----------------*/
+
+@keyframes popIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.8) translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.benefit-item .icon,
+.benefit-item .text h5,
+.benefit-item .text h4,
+.benefit-item .text p {
+  opacity: 0;
+  animation: popIn 0.4s ease-out forwards;
+}
+
+/* Item 1 */
+.benefit-item:nth-of-type(1) .icon    { animation-delay: 0.2s; }
+.benefit-item:nth-of-type(1) .text h5 { animation-delay: 0.4s; }
+.benefit-item:nth-of-type(1) .text h4 { animation-delay: 0.6s; }
+.benefit-item:nth-of-type(1) .text p  { animation-delay: 0.8s; }
+
+/* Item 2 */
+.benefit-item:nth-of-type(2) .icon    { animation-delay: 1.0s; }
+.benefit-item:nth-of-type(2) .text h5 { animation-delay: 1.2s; }
+.benefit-item:nth-of-type(2) .text h4 { animation-delay: 1.4s; }
+.benefit-item:nth-of-type(2) .text p  { animation-delay: 1.6s; }
+
+/* Item 3 */
+.benefit-item:nth-of-type(3) .icon    { animation-delay: 1.8s; }
+.benefit-item:nth-of-type(3) .text h5 { animation-delay: 2.0s; }
+.benefit-item:nth-of-type(3) .text h4 { animation-delay: 2.2s; }
+.benefit-item:nth-of-type(3) .text p  { animation-delay: 2.4s; }
+
+
+
 
 /* -------------------------blogs section-------------------------*/
 
@@ -1106,6 +1381,38 @@ body {
   object-fit: cover;
   border-radius: 20px;
 }
+
+/*-----------------Animation for blog content----------*/
+
+@keyframes throwUp {
+  0% {
+    opacity: 0;
+    transform: translateY(60px) scale(0.95);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(-15px) scale(1.02);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.treatment-card {
+  opacity: 0;
+  animation: throwUp 0.9s cubic-bezier(0.25, 0.8, 0.25, 1) forwards;
+}
+
+.treatment-card:nth-child(1) { animation-delay: 0.2s; }
+.treatment-card:nth-child(2) { animation-delay: 0.4s; }
+.treatment-card:nth-child(3) { animation-delay: 0.6s; }
+.treatment-card:nth-child(4) { animation-delay: 0.8s; }
+.treatment-card:nth-child(5) { animation-delay: 1.0s; }
+.treatment-card:nth-child(6) { animation-delay: 1.2s; }
+/* Add more as needed */
+
+
 
 /*----------------------------contact page section----------------------*/
 
@@ -1258,6 +1565,20 @@ body {
 }
 
 
+/*---------Animation for contact page-------*/
+
+/* Base state: hidden & moved down */
+.fade-up-on-scroll {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+/* When visible class is added (on scroll), fade in and move up */
+.fade-up-on-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
 
 
 
@@ -1336,6 +1657,45 @@ body {
   text-decoration: underline;
 }
 
+@keyframes slideInLeftFast {
+  0% {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRightFast {
+  0% {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.footer-column {
+  opacity: 0;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+}
+
+.footer-column:nth-child(odd) {
+  animation-name: slideInLeftFast;
+  animation-delay: 0.2s;
+}
+
+.footer-column:nth-child(even) {
+  animation-name: slideInRightFast;
+  animation-delay: 0.4s;
+}
+
+
 
 /*--------------about template section------*/
 
@@ -1411,4 +1771,46 @@ body {
 
 .team-member:nth-child(2) { /* Center card */
   transform: translateY(20px);
+}
+
+
+
+
+
+
+@keyframes softPop {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+#extra h2 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  animation: softPop 0.6s ease-out forwards;
+  opacity: 0;
+  animation-delay: 0.2s;
+}
+
+#extra .subtitle {
+  color: #777;
+  margin-bottom: 40px;
+  font-size: 1.1rem;
+  animation: softPop 0.6s ease-out forwards;
+  opacity: 0;
+  animation-delay: 0.3s;
+}
+
+
+.team-member img,
+.team-member h4,
+.team-member small,
+.team-member p {
+  opacity: 0;
+  animation: softPop 0.6s ease-out forwards;
 }
